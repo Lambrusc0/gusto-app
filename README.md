@@ -12,3 +12,6 @@ In your browser, open the file:
 
     /www/index.html
 
+
+This is the root for the application for node npm and then write gulp
+cmd /K "cd C:\xampp\htdocs\projects\Gusto_tablet""# gusto-app" 

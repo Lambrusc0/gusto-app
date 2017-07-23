@@ -1,0 +1,36 @@
+#form{
+    
+    width:60%;
+    margin:$box-center;
+    text-align: $text-center;
+    color:$white;
+    font-size:$font-size+0.3;
+    
+    form{
+        background-color: rgba(100,100,100, 0.5);
+        
+        input[type='text'], input[type='password'], input[type='number']{
+            width:90%;
+            padding:5px 10px;
+            margin:5px;
+            text-align:$text-center;
+            font-size:$font-size+0.1;
+        }
+        input[type='submit'], button{
+            width:50%;
+            padding:5px 20px;
+            margin-bottom:10px;
+            font-size:$font-size+0.1;
+            background-image: url(../images/grey-button.jpg);
+            background-repeat: repeat-x;
+            background-size: contain;
+            &:hover{
+                background-image:url(../images/grey-button-flip.jpg);
+            }
+        }
+        
+        .error{
+            color:$red;
+        }
+    }
+}

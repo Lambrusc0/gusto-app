@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/images/favicon/manifest.json">
+        <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,600,700" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.touch-punch.min.js"></script>
+        <title>Gusto</title>
+    </head>
+    <body onload="pos()">
+        <div id="content-wrap">
+        
+            <div id="pos-content">
+            
+                <div id="hide">
+                    <div id="number-board-table">
+                        <div id="number-board-wrap">
+                            <div id="text-box">
+                                <span id="code-display">Table Number</span>
+                            </div>
+                            
+                                <input type="button" name="1" class="number-button" value="1" id="1">
+                                <input type="button" name="2" class="number-button" value="2" id="2">
+                                <input type="button" name="3" class="number-button" value="3" id="3">
+                                <input type="button" name="4" class="number-button" value="4" id="4">
+                                <input type="button" name="5" class="number-button" value="5" id="5">
+                                <input type="button" name="6" class="number-button" value="6" id="6">
+                                <input type="button" name="7" class="number-button" value="7" id="7">
+                                <input type="button" name="8" class="number-button" value="8" id="8">
+                                <input type="button" name="9" class="number-button" value="9" id="9">
+                                <input type="button" name="back" class="number-button" value="&#8592;" id="back">
+                                <input type="button" name="0" class="number-button" value="0" id="0">
+                                <input type="button" name="delete" class="number-button" value="&#215;" id="delete">
+                                <input type="button" name="enter" class="enter-button" value="OPEN NEW TABLE" id="enter">
+                                <input type="button" name="cancel" class="enter-button" value="CANCEL" id="cancel">
+                        </div>
+                    </div><!-- END OF NUMBER BOARD TABLE -->
+                </div>
+				
+				
+                
+                <div id="top-menu">
+                
+                    <input type="button" name="new-table" id="new-table" class="green" value="NEW TABLE">
+                    <input type="button" name="open-table" id="open-table" class="green" value="OPEN TABLE">
+                    <input type="button" name="back-button" id="back-button" class="red" value="LOG OUT">
+                    
+                </div>
+                
+                <div id="box-container">
+                
+                    <div id="left-menu">
+
+                        <div id="items">
+                            
+                            <h2>Items</h2>
+                        
+                        </div>
+                        
+                        <div id="send-button">
+                            <input type="button" value="CANCEL" id="item-cancel" disabled>
+                            <input type="button" value="SEND ORDER" id="send" disabled>
+                            <input type="button" class="send-button" value="PRINT BILL" id="print" disabled>
+                            <input type="button" value="PAY" id="pay" disabled>
+                        </div>
+                        
+                        
+                        <div id="subtotal">
+                        
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>SUBTOTAL:</td>
+                                    <td id="subtotal"></td>
+                                </tr>
+                            </table>
+                        
+                        </div>
+                        
+                        <div id="total-price">
+                        
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>TOTAL DUE:</td>
+                                    <td id="total"></td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                        
+                        <div id="info-bar">
+                            
+                            <div id="personal-info">
+                            
+                                <span>Name:</span><br>
+                                <span id="name" style="color:white;"></span><br>
+                                <span>Position</span><br>
+                                <span id="position" style="color:white;"></span><br>
+                                <span>Number: </span><br>
+                                <span id="number-board-display" style="color:white;"></span>
+                            
+                            </div>
+                            
+                            <div id="app-info">
+                                
+                                <span>Time:</span><br>
+                                <span id="time" style="color:white;"></span><br>
+                                <span>Open tables:</span><br>
+                                <span id="open-tables" style="color:white;"></span><br>
+                                <span>Customers:</span><br>
+                                <span id="customers" style="color:white;"></span>
+                            
+                            </div>
+                        
+                        </div>
+                        
+                    </div><!-- END OF LEFT MENU -->
+                    
+                    <div id="number-board">
+
+                            <input type="button" name="1" class="number-button" value="1" id="1">
+                            <input type="button" name="2" class="number-button" value="2" id="2">
+                            <input type="button" name="3" class="number-button" value="3" id="3">
+                            <input type="button" name="4" class="number-button" value="4" id="4">
+                            <input type="button" name="5" class="number-button" value="5" id="5">
+                            <input type="button" name="6" class="number-button" value="6" id="6">
+                            <input type="button" name="7" class="number-button" value="7" id="7">
+                            <input type="button" name="8" class="number-button" value="8" id="8">
+                            <input type="button" name="9" class="number-button" value="9" id="9">
+                            <input type="button" name="0" class="number-button" value="0" id="0">
+                            <input type="button" name="back" class="number-button" value="&#8592;" id="back">
+
+                    </div><!-- END OF NUMBER BOARD -->
+
+                    <div id="right-menu">
+
+                        <h2>Open tables</h2>
+                        
+                        <div class="scrollbar" id="tables"></div>
+
+                    </div><!-- END OF RIGHT MENU -->
+
+                    
+                
+                </div>
+                
+                    <div id="dialog-message" title="Download complete">
+                      <p>
+                        <span class="" style="float:left; margin:0 7px 50px 0;"></span>
+                        Your files have downloaded successfully into the My Downloads folder.
+                      </p>
+                      <p>
+                        Currently using <b>36% of your storage space</b>.
+                      </p>
+                    </div>
+            
+            </div>
+        
+        </div>
+        <script src="js/main.js"></script>
+        <script>
+            
+        // Time display
+        setInterval(function () {
+            var startTime = new Date(),
+            outputDiv = document.getElementById('time') // or $('#output').get(0);
+
+            var aDate = new Date();
+            var dateString = '';
+            var h = aDate.getHours();
+            var m = aDate.getMinutes();
+            var s = aDate.getSeconds();
+
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+            if (s < 10) s = '0' + s;
+
+
+            dateString = h + ' : ' + m + ' : ' + s;
+            outputDiv.innerHTML = dateString; 
+            }, 1000);
+            
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
