@@ -83,9 +83,8 @@
         background-size: 100% 100%;
         background-repeat: no-repeat;
         height:10%;
-        -webkit-appearance: none;
         font-size: $font-size*1.2;
-        :hover{
+        &:hover{
                 background-image: url(../images/grey-button-flip.jpg);
             }
     }
