@@ -1,17 +1,11 @@
-# A Blank PhoneGap App
+# Gusto PoS tablet application
 
 ## Usage
 
-### PhoneGap CLI
+### Part of Gusto system
 
-    $ phonegap create my-app --template blank
+    This application is a part of Gusto system and comes along with the main website
 
-### Desktop
+### Tablet and Browser application
 
-In your browser, open the file:
-
-    /www/index.html
-
-
-This is the root for the application for node npm and then write gulp
-cmd /K "cd C:\xampp\htdocs\projects\Gusto_tablet""# gusto-app" 
+Gusto system is a Point of Sales system includes a website and a tablet application.
