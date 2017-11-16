@@ -2,11 +2,15 @@
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Gusto_tablet</name>
     <description>
-        A blank PhoneGap app.
+        Gusto POS system
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Gabor Juhasz
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <engine name="android" spec="^6.2.3" />
+    <engine name="windows" spec="^5.0.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
+    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
 </widget>

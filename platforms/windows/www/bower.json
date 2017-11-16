@@ -1,0 +1,29 @@
+﻿{
+  "name": "Gusto PoS system",
+  "authors": [
+    "Gabor Juhasz <gabor.juhasz.uk@gmail.com>"
+  ],
+  "description": "Restaurant tablet application",
+  "main": "index.html",
+  "keywords": [
+    "PoS",
+    "restaurant",
+    "management",
+    "tablet",
+    "waiter"
+  ],
+  "license": "MIT",
+  "homepage": "gaborjuhasz.co.uk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.4",
+    "backbone": "^1.3.3"
+  }
+}

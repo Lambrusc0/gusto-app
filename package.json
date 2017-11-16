@@ -1,0 +1,44 @@
+{
+    "name": "gusto_tablet",
+    "version": "1.0.0",
+    "description": "restaurant tablet application",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gabor Juhasz",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.18.12",
+        "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
+        "cordova-lib": "^7.0.1",
+        "del": "^2.2.2",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-bump": "^2.7.0",
+        "gulp-compass": "^2.1.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-uglify": "^3.0.0",
+        "sqlite3": "^3.1.8"
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-sqlite-storage": "^2.0.4",
+        "cordova-windows": "^5.0.0",
+        "sqlite": "^2.8.0"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-geolocation": {},
+            "cordova-sqlite-storage": {}
+        },
+        "platforms": [
+            "android",
+            "windows"
+        ]
+    }
+}

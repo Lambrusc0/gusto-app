@@ -1,0 +1,46 @@
+#summary{
+    font-size: 1.5em;
+    h1{
+        margin-bottom: 10%;
+    }
+}
+
+#sum-data{
+    width:90%;
+    margin: 0px auto;
+    display: -webkit-flex;
+    display: flex;
+    #sum-things{
+        width:50%;
+        table{
+            width: 80%;
+        }
+    }
+    #sum-traffic{
+        width:50%;
+        table{
+            width:100%;
+            tr th{
+                padding-bottom: 30px;
+            }
+            #sum-service-charge-tr td{
+                padding-top: 30px;
+            }
+            #sum-total-tr td{
+                border-top:1px solid black;
+                padding-top: 50px;
+            }
+        }
+    }
+}
+
+#sum-buttons{
+    position: absolute;
+    right:10%;
+    bottom:10%;
+    .sum-button{
+        padding:20px 15px;
+        margin: 10px 0px;
+        font-size: 1.2em;
+    }
+}

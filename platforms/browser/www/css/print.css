@@ -1,0 +1,91 @@
+#top-menu, #send-button, .send-button, #number-board, #right-menu,#sum-buttons{
+    display: none;
+}
+
+h1{
+    color:black;
+}
+
+h3{
+    width:100%;
+    display: block;
+    text-align: center;
+    margin: 0px auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+#table-wrap{
+    overflow: 100%;
+    display: inline;
+}
+
+#subtotal{
+    margin: 0px auto;
+}
+
+#total-price{
+    margin: 0px auto 20px auto;
+    border-bottom: 1px dotted black;
+}
+
+#info-bar{
+    height:auto;
+    display: inline;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#personal-info{
+    
+}
+
+#items{
+    display: inline;
+    height:auto;
+    overflow-y: visible;
+    text-align: center;
+}
+
+#left-menu{
+    font-size: 0.7em;
+    display: inline;
+    height:auto;
+    width:100%;
+    max-width: 250px;
+    margin:0px auto;
+    overflow-y:100%;
+}
+
+#message-wrap{
+    display: inline;
+    width:100%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.hide{
+    display: block;
+}
+
+#sum-data{
+    display: inline;
+    text-align: center;
+    width:60%;
+    margin: 0px auto;
+}
+
+#sum-things{
+    display: inline;
+    width: 100%;
+}
+#sum-things table{
+    width: 100%;
+    margin: 0px auto;
+    padding-bottom: 60px;
+}
+
+#sum-traffic{
+    display: inline;
+    text-align: left;
+}

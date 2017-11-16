@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/images/favicon/manifest.json">
+        <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,600,700" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.touch-punch.min.js"></script>
+        <title>Gusto</title>
+    </head>
+    <body onload="openTable()">
+        <div id="content-wrap">
+        
+            <div id="pos-content">
+            
+                <div id="hide">
+                    <div id="number-board-table">
+                        <div id="number-board-wrap">
+                            <div id="text-box">
+                                <span id="code-display">Table Number</span>
+                            </div>
+                            
+                                <input type="button" name="1" class="number-button" value="1" id="1">
+                                <input type="button" name="2" class="number-button" value="2" id="2">
+                                <input type="button" name="3" class="number-button" value="3" id="3">
+                                <input type="button" name="4" class="number-button" value="4" id="4">
+                                <input type="button" name="5" class="number-button" value="5" id="5">
+                                <input type="button" name="6" class="number-button" value="6" id="6">
+                                <input type="button" name="7" class="number-button" value="7" id="7">
+                                <input type="button" name="8" class="number-button" value="8" id="8">
+                                <input type="button" name="9" class="number-button" value="9" id="9">
+                                <input type="button" name="back" class="number-button" value="&#8592;" id="back">
+                                <input type="button" name="0" class="number-button" value="0" id="0">
+                                <input type="button" name="delete" class="number-button" value="&#215;" id="delete">
+                                <input type="button" name="enter" class="enter-button" value="OPEN NEW TABLE" id="enter">
+                                <input type="button" name="cancel" class="enter-button" value="CANCEL" id="cancel">
+                        </div>
+                    </div><!-- END OF NUMBER BOARD TABLE -->
+                </div>
+                <div id="payment">
+                
+                    <div id="payment-wrap">
+                    
+                        <div id="payment-content">
+                            <h3>Payment type</h3>
+                            <input type="button" name="cash" class="payment-button" value="CASH" id="cash">
+                            <input type="button" name="amex" class="payment-button" value="AMERICAN EXPRESS" id="amex">
+                            <input type="button" name="card" class="payment-button" value="OTHER CARD" id="card">
+                            <input type="button" name="cancel" class="payment-button" value="CANCEL PAYMENT" id="cancel">
+                        </div>
+                    
+                    </div>
+                
+                </div>
+                
+                <div id="top-menu">
+                
+                    <input type="button" class="red" value="CANCEL" id="cancel-order">
+                    
+                </div>
+                
+                <div id="box-container">
+                
+                    <div id="left-menu">
+
+                        <div id="items">
+                            <h1 id="restaurant-name" class="hide"></h1>
+                            <h3 class="hide">VAT No: <span id="vat-number"></span></h3>
+                            <h2>Orders</h2>
+                        
+                            <div id="table-wrap">
+                                <table id="item-table" style="width:90%; margin: 0px auto;">
+                                    <tr>
+                                        <th></th>
+                                        <th style="text-align:left;">Item name</th>
+                                        <th style="text-align:right;">price</th>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                        </div>
+                        <div id="send-button">
+                            <input type="button" class="send-button" value="CANCEL" id="item-cancel" disabled>
+                            <input type="button" class="send-button" value="SEND ORDER" id="item-send">
+                            <input type="button" class="send-button" value="PRINT BILL" id="print">
+                            <input type="button" class="send-button" value="PAY" id="table-pay">
+                        </div>
+                        
+                        
+                        <div id="subtotal">
+                        
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="text-align:left;">SUBTOTAL:</td>
+                                    <td id="subtotal-price" style="text-align:left;"></td>
+                                    <input type="hidden" id="subtotal-input">
+                                    <td style="text-align:right;">SERVICE CHARGE:</td>
+                                    <td id="service-charge" style="text-align:right;"></td>
+                                    <input type="hidden" id="service-charge-input">
+                                </tr>
+                            </table>
+                        
+                        </div>
+                        
+                        <div id="total-price">
+                        
+                            <table style="width:100%;">
+                                <tr>
+                                    <td><strong>TOTAL DUE:</strong></td>
+                                    <td><strong id="total"></strong></td>
+                                    <input type="hidden" id="total-input">
+                                </tr>
+                            </table>
+                            
+                        </div>
+                        
+                        <div id="info-bar">
+                            
+                            <div id="personal-info">
+                            
+                                <span>Name:</span><br>
+                                <span id="name" style="color:white;"></span><br>
+                                <span>Position</span><br>
+                                <span id="position" style="color:white;"></span><br>
+                                <span>Number: </span><br>
+                                <span id="number-board-display" style="color:white;"></span>
+                            
+                            </div>
+                            
+                            <div id="app-info">
+                                
+                                <span>Time:</span><br>
+                                <span id="time" style="color:white;"></span><br>
+                                <span>Table number:</span><br>
+                                <span id="table-number" style="color:white;"></span><br>
+                                <span>Customers:</span><br>
+                                <span id="customers" style="color:white;"></span><br>
+                            
+                            </div>
+                        
+                        </div>
+                        
+                        <div id="message-wrap" class="hide">
+                            <strong><span id="message" class="hide"></span></strong><br>
+                            <span id="phone" class="hide"></span>
+                        </div>
+                        
+                        
+                    </div><!-- END OF LEFT MENU -->
+                    
+                    <div id="number-board">
+
+                            <input type="button" name="1" class="number-button" value="1" id="1">
+                            <input type="button" name="2" class="number-button" value="2" id="2">
+                            <input type="button" name="3" class="number-button" value="3" id="3">
+                            <input type="button" name="4" class="number-button" value="4" id="4">
+                            <input type="button" name="5" class="number-button" value="5" id="5">
+                            <input type="button" name="6" class="number-button" value="6" id="6">
+                            <input type="button" name="7" class="number-button" value="7" id="7">
+                            <input type="button" name="8" class="number-button" value="8" id="8">
+                            <input type="button" name="9" class="number-button" value="9" id="9">
+                            <input type="button" name="0" class="number-button" value="0" id="0">
+                            <input type="button" name="back" class="number-button" value="&#8592;" id="back">
+
+                    </div><!-- END OF NUMBER BOARD -->
+
+                    <div id="right-menu">
+
+                        <h2>Items</h2>
+                        
+                        <div id="right-menu-wrap">
+                        
+                            
+                        
+                        </div>
+
+                    </div><!-- END OF RIGHT MENU -->
+
+                    
+                
+                </div>
+                
+            
+            </div>
+        
+        </div>
+        <script src="js/main.js"></script>
+        <script>
+            
+        // Time display
+        setInterval(function () {
+            var startTime = new Date(),
+            outputDiv = document.getElementById('time') // or $('#output').get(0);
+
+            var aDate = new Date();
+            var dateString = '';
+            var h = aDate.getHours();
+            var m = aDate.getMinutes();
+            var s = aDate.getSeconds();
+
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+            if (s < 10) s = '0' + s;
+
+
+            dateString = h + ' : ' + m + ' : ' + s;
+            outputDiv.innerHTML = dateString; 
+            }, 1000);
+            
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

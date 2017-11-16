@@ -1,6 +1,21 @@
 // global variable to open the web SQL database
-var db = openDatabase('gusto_db', '1.0', 'Gusto DB', 2 * 1024 * 1024);
+if(window.openDatabase){
+    var db = openDatabase('gusto_db', '1.0', 'Gusto DB', 2 * 1024 * 1024);
+} else {
+    alert("Your browser doesn`t support WebSQL, try Google Chrome or Safari.");
+}
 
+
+
+// Function to open the web SQL and create tables
+db.transaction(function (tx) {
+
+    tx.executeSql('CREATE TABLE IF NOT EXISTS category (category_id unique, category_name text)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS user (user_id unique, user_name text, access integer, user_position text, app_code integer)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS item (item_id unique, category_id integer,item_name text, item_price decimal(5,2), item_description text)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS settings (VAT_number integer, service_charge decimal(4,2), phone integer, message text, company text)');
+
+});
 
 // This function is to disable zoom for double click on iOS safari touch
 document.addEventListener('gesturestart', function (e) {
@@ -23,7 +38,7 @@ $('#login').click(function(){
     
     localStorage.setItem('uname', uname);
     localStorage.setItem('companyId', companyId);
-    localStorage.setItem('password', password);
+    //localStorage.setItem('password', password);
     
     //console.log(companyId);
     //console.log(uname);
@@ -46,35 +61,31 @@ $('#login').click(function(){
 				
 				//console.log(data);
 				
-				// Function to open the web SQL and create tables
-				db.transaction(function (tx) {
-                    
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS category (category_id unique, category_name text)');
-						tx.executeSql('CREATE TABLE IF NOT EXISTS user (user_id unique, user_name text, access integer, user_position text, app_code integer)');
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS item (item_id unique, category_id integer,item_name text, item_price decimal(5,2), item_description text)');
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS settings (VAT_number integer, service_charge decimal(4,2), phone integer, message text, company TEXT)');
-                    
-                     });
+                
+                
+				
 				
 				// if answer from database is false than user was not found
-                if(data==false){
+                if(data===false){
                     $('#error').html("User data was not found");
                 }else{
                     data = $.parseJSON(data);
+                    //console.log(data);
                     var categoryData = data[Object.keys(data)[0]];
 					var userData = data[Object.keys(data)[1]];
                     var itemData = data[Object.keys(data)[2]];
                     var settingsData = data[Object.keys(data)[3]];
                     var company = data[Object.keys(data)[4]];
-                    console.log(settingsData);
+                    //console.log(settingsData);
+                    
+                    
 					
 					db.transaction(function (tx) {
-                        
-                        // for loop for the categories
-                        for(var i = 0; i<categoryData.length; i++){
+                            
+                            // for loop for the categories
+                            for(var i = 0; i<categoryData.length; i++){
 
-                            var category = categoryData[i];
-
+                                var category = categoryData[i];
 
 
                                 for(var x=0;x<category.length;x++){
@@ -84,8 +95,10 @@ $('#login').click(function(){
 
                                     tx.executeSql('INSERT INTO category (category_id, category_name) VALUES ('+categoryId+', "'+categoryName+'")');
 
+                                    console.log(categoryId+" "+categoryName);
                                 }
                             }
+                        
                         
                         // for loop for the users
                         for(var i2 = 0; i2<userData.length; i2++){
@@ -144,11 +157,12 @@ $('#login').click(function(){
                                 var serviceCharge = item[x4].service_charge;
                                 var phone = item[x4].phone;
                                 var message = item[x4].message;
+                                var companyN = "HELLO";
                                 
-                                console.log(itemId+" "+itemName+" "+price+" "+categoryId+" "+itemDescription);
+                                //console.log(itemId+" "+itemName+" "+price+" "+categoryId+" "+itemDescription);
                                 
                                 // put items in the database
-                                tx.executeSql('INSERT INTO settings (VAT_number, service_charge, phone, message) VALUES ('+VATNumber+', '+serviceCharge+', '+phone+', "'+message+'")');
+                                tx.executeSql('INSERT INTO settings (VAT_number, service_charge, phone, message, company) VALUES ('+VATNumber+', '+serviceCharge+', '+phone+', "'+message+'", "'+companyN+'")');
                             }
                         }
                         
@@ -165,12 +179,14 @@ $('#login').click(function(){
                                 console.log(companyName);
                                 
                                 // put items in the database
-                                tx.executeSql('UPDATE settings SET company = '+companyName+' WHERE ');
+                                tx.executeSql("UPDATE settings SET company = '"+companyName+"'");
                             }
                         }
                         
                     
-					});
+					}, function (err) {
+                        console.log("error: "+ err.message);
+                    });
 
                      /*db.transaction(function (tx) {
                         tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
@@ -289,6 +305,7 @@ $( "#keyboard" ).on( "click", "input[type=button]", function(){
                     $('#error').html("User data was not found");
                 }else{
                     data = $.parseJSON(data);
+                    console.log(data);
                     var categoryData = data[Object.keys(data)[0]];
 					var userData = data[Object.keys(data)[1]];
                     var itemData = data[Object.keys(data)[2]];
@@ -1209,13 +1226,14 @@ function openTable(){
             
             var rowId = [];
             var len = results.rows.length, i;
-            
-            for (i = 0; i < len; i++){
+            var categoryId = [];
+            var categoryIdi = 0; 
+            for (var i = 0; i < len; i++){
                 var categoryRowId = results.rows.item(i).rowid;
-                var categoryId = results.rows.item(i).category_id;
+                categoryId.push(results.rows.item(i).category_id)
                 var categoryName = results.rows.item(i).category_name;
                 
-                //console.log(categoryName);
+                
                 
                 var r= $('<input type="button" class="green" value="'+categoryName+'" id="'+categoryRowId+'"/>');
                 //$("#top-menu").append(r);
@@ -1228,18 +1246,30 @@ function openTable(){
                 $("#right-menu-wrap").append(categorys);
                 
                 // GET ITEMS
-                tx.executeSql('SELECT * FROM item WHERE category_id = '+categoryId+' ' , [], function (tx, results){
+                tx.executeSql('SELECT * FROM item WHERE category_id = '+categoryId[i]+' ' , [], function (tx, results){
                     var lenCategory = results.rows.length, x;
                     //console.log(lenCategory);
                     for(x=0; x < lenCategory; x++){
                         var itemName = results.rows.item(x).item_name;
                         var itemId = results.rows.item(x).item_id;
                         var itemDescription = results.rows.item(x).item_description;
-                        var categoryId = results.rows.item(i).category_id;
+                        categoryIdi = results.rows.item(x).category_id;
+                        console.log(categoryId[2]);
+                        console.log(categoryIdi);
+                        var cid = 0;
+                        if(categoryIdi == categoryId[0]){
+                            cid = 1;
+                        }else if(categoryIdi == categoryId[1]){
+                            cid = 2;
+                        }else if(categoryIdi == categoryId[2]){
+                            cid = 3;
+                        }else if(categoryIdi == categoryId[3]){
+                            cid = 4;
+                        }
                         
                         // Button color class can be green, red or blue
                         var item = $('<input class="blue hide" type="button" value="'+itemName+'" id="'+itemId+'">')
-                        $("#c"+categoryId+"").append(item);
+                        $("#c"+cid+"").append(item);
                         //console.log(itemName);
                     }
                     
