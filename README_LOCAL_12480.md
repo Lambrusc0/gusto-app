@@ -1,4 +1,3 @@
-
 # Gusto system tablet web application
 
 ## Usage
@@ -9,15 +8,8 @@ It will not work on localhost.
 The user manual is available on the website application after login, on the welcome page.
 
 
-# Gusto PoS tablet application
 
-## Usage
-
-### Part of Gusto system
-
-    This application is a part of Gusto system and comes along with the main website
-
-### Tablet and Browser application
+### Desktop
 
 In your browser, open the file:
 
@@ -51,5 +43,3 @@ Login code: 1212 or 1111
 
 This is the root to the application for node npm
 cmd /K "cd C:\xampp\htdocs\projects\Gusto_tablet"
-
-Gusto system is a Point of Sales system includes a website and a tablet application.
